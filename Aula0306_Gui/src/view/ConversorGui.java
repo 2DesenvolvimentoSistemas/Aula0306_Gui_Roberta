@@ -1,6 +1,7 @@
 
 package view;
 
+import javax.swing.JOptionPane;
 import model.design.Conversor;
 
 /**
@@ -124,11 +125,18 @@ public class ConversorGui extends javax.swing.JFrame {
 //        criacao e instancia do objeto da classe Conversor
             Conversor c = new Conversor();
         
+            try {
 //        entrada
             cel = Double.parseDouble(txtTemperatura.getText());
             
 //            saida
                 lblResultado.setText(c.celFah(cel) + "°F");
+                
+            } catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage(), "Ops!", JOptionPane.ERROR_MESSAGE);
+                
+            }
+
         
        
     }//GEN-LAST:event_btnCalcularActionPerformed
